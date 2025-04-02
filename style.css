@@ -15,50 +15,36 @@ body {
     padding: 20px;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.logo {
-    max-width: 150px;
-    margin-top: 10px;
-}
-
-nav {
-    background-color: #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-nav a {
-    margin: 0 10px;
-    text-decoration: none;
+h1 {
     color: #007bff;
 }
 
-main {
-    margin-top: 20px;
+a {
+    color: #007bff;
+    text-decoration: none;
 }
 
-.feature {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 15px;
+a:hover {
+    text-decoration: underline;
 }
 
-.pigeon-day {
-    max-width: 200px;
-    margin: 10px auto;
-    display: block;
+/* Add button styles here */
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-footer {
-    text-align: center;
-    margin-top: 20px;
-    padding-top: 10px;
-    border-top: 1px solid #ccc;
+button:hover {
+    background-color: #0056b3;
 }
 
-/* Add retro/glitch effects later */
+#seedNotification {
+    background-color: lightgreen;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
