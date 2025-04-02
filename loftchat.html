@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loft Chat - CooLink</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #chatRooms {
+            margin-bottom: 20px;
+        }
+
+        #chatRooms button {
+            padding: 8px 15px;
+            margin-right: 10px;
+            background-color: #ddd;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #chatRooms button.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        #chatDisplay {
+            height: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+        }
+
+        #chatInput {
+            width: calc(100% - 120px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #chatSend {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loft Chat</h1>
+
+        <div id="chatRooms">
+            <button onclick="joinRoom('Seed Seekers')">Seed Seekers</button>
+            <button onclick="joinRoom('Rooftop Ramblers')">Rooftop Ramblers</button>
+            <button onclick="joinRoom('Pigeon Poetry Slam')">Pigeon Poetry Slam</button>
+        </div>
+
+        <div id="chatDisplay"></div>
+
+        <div>
+            <input type="text" id="chatInput" placeholder="Type your message...">
+            <button id="chatSend" onclick="sendMessage()">Send</button>
+        </div>
+
+        <a href="index.html">Back to CooLink</a>
+    </div>
+
+    <script>
+        let currentRoom = null;
+
+        function joinRoom(roomName) {
+            currentRoom = roomName;
+            document.getElementById('chatDisplay').innerHTML = `Joined ${roomName}!`;
+
+            // Highlight the active room button
+            const roomButtons = document.querySelectorAll('#chatRooms button');
+            roomButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.textContent === roomName) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        function sendMessage() {
+            const message = document.getElementById('chatInput').value;
+            if (message && currentRoom) {
+                const chatDisplay = document.getElementById('chatDisplay');
+                chatDisplay.innerHTML += `<p><strong>${currentRoom}:</strong> ${message}</p>`;
+                document.getElementById('chatInput').value = ''; // Clear input
+            } else {
+                alert('Please join a room and type a message.');
+            }
+        }
+    </script>
+</body>
+</html>
