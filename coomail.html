@@ -9,26 +9,25 @@
 <body>
     <div class="container">
         <h1>CooMail</h1>
-        <div id="seedNotification" style="display: none;">Check if you've got seed!</div>
+        <div id="seedNotification" style="display: none;">You've Got Seed!</div>
         <p>Welcome to your CooMail inbox. Check your messages from other pigeons!</p>
+        <button id="checkSeedButton" onclick="checkSeed()">Check for Seed</button>
         <a href="index.html">Back to CooLink</a>
     </div>
 
     <script>
-        function showSeedNotification() {
+        function checkSeed() {
             const notification = document.getElementById('seedNotification');
-            notification.style.display = 'block';
-
             const audio = new Audio('seed.mp3');
-            audio.play();
-        }
 
-        // Randomly show notification after 5 to 15 seconds
-        setTimeout(() => {
-            if (Math.random() < 0.5) { // 50% chance of showing notification
-                showSeedNotification();
+            if (Math.random() < 0.5) { // 50% chance of getting seed
+                notification.style.display = 'block';
+                audio.play();
+            } else {
+                notification.style.display = 'none';
+                alert('No seed today!'); // Optional: Provide feedback when no seed is found
             }
-        }, Math.random() * 10000 + 5000); // Random delay between 5 and 15 seconds
+        }
     </script>
 </body>
 </html>
