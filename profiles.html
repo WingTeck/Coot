@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profiles - CooLink</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .profile {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile img {
+            max-width: 100px;
+            margin-right: 20px;
+        }
+
+        .profile button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .profile button:hover {
+            background-color: #0056b3;
+        }
+
+        #dmContainer {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            display: none; /* Hidden by default */
+        }
+
+        #dmMessages {
+            height: 200px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+        }
+
+        #dmInput {
+            width: calc(100% - 120px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #dmSend {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pigeon Profiles</h1>
+
+        <div class="profile">
+            <img src="pigeon1.jpg" alt="Pigeon 1">
+            <div>
+                <h2>Pip</h2>
+                <p>Interests: Seed varieties, rooftop views</p>
+                <button onclick="startChat('Pip')">Chat</button>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img src="pigeon2.jpg" alt="Pigeon 2">
+            <div>
+                <h2>Rusty Wing</h2>
+                <p>Interests: Urban exploration, philosophical musings</p>
+                <button onclick="startChat('Rusty Wing')">Chat</button>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img src="pigeon3.jpg" alt="Pigeon 3">
+            <div>
+                <h2>Sky Dancer</h2>
+                <p>Interests: High-altitude flying, acrobatic maneuvers</p>
+                <button onclick="startChat('Sky Dancer')">Chat</button>
+            </div>
+        </div>
+
+        <div id="dmContainer">
+            <h2>Direct Message with <span id="dmUsername"></span></h2>
+            <div id="dmMessages"></div>
+            <div>
+                <input type="text" id="dmInput" placeholder="Type your message...">
+                <button id="dmSend" onclick="sendDM()">Send</button>
+            </div>
+        </div>
+
+        <a href="index.html">Back to CooLink</a>
+    </div>
+
+    <script>
+        let currentDMUser = null;
+
+        function startChat(username) {
+            currentDMUser = username;
+            document.getElementById('dmUsername').textContent = username;
+            document.getElementById('dmContainer').style.display = 'block';
+            document.getElementById('dmMessages').innerHTML = ''; // Clear previous messages
+        }
+
+        function sendDM() {
+            const message = document.getElementById('dmInput').value;
+            if (message && currentDMUser) {
+                const dmMessages = document.getElementById('dmMessages');
+                dmMessages.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+                document.getElementById('dmInput').value = ''; // Clear input
+            } else {
+                alert('Please start a chat and type a message.');
+            }
+        }
+    </script>
+</body>
+</html>
